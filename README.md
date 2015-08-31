@@ -1,4 +1,4 @@
-# autoswi
+# Autoswipe
 python script to send swipe motions to your phone
 
 ## Depencies
@@ -21,9 +21,12 @@ and the symlink
 	cd autoswipe
 	ln -s SwipeRight /path/to/sdk/tools
 
-## Ready, now you can try it out, edit SwipeRight.py with interval and amount
-## start with low numbers so you dont drain your battery (has happened to me)
+## Ready, now you can try it out
+Edit SwipeRight.py with interval and amount
+start with low numbers so you dont drain your battery (has happened to me)
+
 Start with 
+
 	cd autoswipe
 	./swipestart
 
