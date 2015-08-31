@@ -1,33 +1,8 @@
 #!/bin/bash
-# $PATH Variable
-export PATH=$PATH:/cygdrive/c/Users/Ultimate/AppData/Local/Android/sdk1/platform-tools:/cygdrive/c/Users/Ultimate/AppData/Local/Android/sdk1/tools
-
-# Aliases dont work, use functions
 
 StartSwipe() 
 {
 	monkeyrunner.bat SwipeRight.py;
 }
 
-### A Series of checks to look for monkeyrunner.bat and its pty ###
-# an attempt at stopping monkeyrunner.bat, its shell and remote process.
-
-StopSwipe()
-{
-	# Initializing Variables
-	PTY_MONKEY=$(ps | grep monkeyrunner | awk '{ system("echo " $5) }')
-	PID_OF_BASH=$(ps | grep bash | grep $(echo $PTY_MONKEY) | awk '{ system("echo "$1) }')
-	
-	sleep 1;
-	
-	echo "killing remote monkey script"
-	adb shell ps | awk '/com\.android\.commands\.monkey/ { system("adb shell kill " $2) }'
-
-	echo "killing local monkeybat.bat"
-	kill -9 $(ps | grep monkey | awk '{ system("echo " $1) }');
-	
-	echo "killing local shell"
-	kill -9 $PID_OF_BASH
-	
-}
-
+StartSwipe

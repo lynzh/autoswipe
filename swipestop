@@ -1,16 +1,4 @@
 #!/bin/bash
-# $PATH Variable
-export PATH=$PATH:/cygdrive/c/Users/Ultimate/AppData/Local/Android/sdk1/platform-tools:/cygdrive/c/Users/Ultimate/AppData/Local/Android/sdk1/tools
-
-# Aliases dont work, use functions
-
-StartSwipe() 
-{
-	monkeyrunner.bat SwipeRight.py;
-}
-
-### A Series of checks to look for monkeyrunner.bat and its pty ###
-# an attempt at stopping monkeyrunner.bat, its shell and remote process.
 
 StopSwipe()
 {
@@ -31,3 +19,4 @@ StopSwipe()
 	
 }
 
+StopSwipe
