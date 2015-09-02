@@ -8,14 +8,32 @@ StopSwipe()
 	
 	sleep 1;
 	
-	echo "killing remote monkey script"
 	adb shell ps | awk '/com\.android\.commands\.monkey/ { system("adb shell kill " $2) }'
+	if [ $? == 0 ];
+	then
+		echo "killing remote monkey script"
+	elif [[ $? > 0 ]];
+	then
+		echo "Error in; adb shell ps, or killing remote monkey script"
+	fi	
 
-	echo "killing local monkeybat.bat"
 	kill -9 $(ps | grep monkey | awk '{ system("echo " $1) }');
+	if [ $? == 0 ];
+	then
+		echo "killing local monkeybat.bat"
+	elif [[ $? > 0 ]];
+	then
+		echo "Error in; monkeyrunner.bat locally, not running?"
+	fi
 	
-	echo "killing local shell"
 	kill -9 $PID_OF_BASH
+	if [[ $? == 0 ]];
+	then
+		echo "killing local shell"
+	elif [[ $? > 0 ]];
+	then
+		echo "Error in; local shell not running?"
+	fi
 	
 }
 
