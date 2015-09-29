@@ -1,7 +1,7 @@
 # Imports the monkeyrunner modules used by this program
 from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 # defining amount of time between actions
-SleepInteger = 0.3
+SleepInteger = 1.5
 # x is our starting integer
 x = 0
 # num is our ending integer
@@ -10,7 +10,7 @@ num = 250
 print 'Swiping motion started - %s sec between swipes, going for %s Swipes\n' % (SleepInteger, num,),
 print '. . .waiting for connection'
 # Connects to the current device, returning a MonkeyDevice object
-device = MonkeyRunner.waitForConnection(10)
+device = MonkeyRunner.waitForConnection(4)
 # while loop to send instructions to phone
 while x < num :
 	# device.drag sets coordinates for start -> stop swiping motion
@@ -30,4 +30,4 @@ while x < num :
 	# dont know if necessary
 	if x == num:
 		print 'Swiping done, reached %s actions' % (x,),
-		break
+		break	# break stopes the loop if x == num

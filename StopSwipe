@@ -3,13 +3,13 @@
 StopSwipe()
 {
 	# Initializing Variables
-	PTY_MONKEY=$(ps | grep monkeyrunner | awk '{ system("echo " $5) }')
-	PID_OF_BASH=$(ps | grep bash | grep $(echo $PTY_MONKEY) | awk '{ system("echo "$1) }')
+	PTY_MONKEY=$(ps | grep -q monkeyrunner | awk '{ system("echo " $5) }')
+	PID_OF_BASH=$(ps | grep -q bash | grep $(echo $PTY_MONKEY) | awk '{ system("echo "$1) }')
 	
 	sleep 1;
 	
 	adb shell ps | awk '/com\.android\.commands\.monkey/ { system("adb shell kill " $2) }'
-	if [ $? == 0 ];
+	if [[ $? == 0 ]];
 	then
 		echo "killing remote monkey script"
 	elif [[ $? > 0 ]];
@@ -18,7 +18,7 @@ StopSwipe()
 	fi	
 
 	kill -9 $(ps | grep monkey | awk '{ system("echo " $1) }');
-	if [ $? == 0 ];
+	if [[ $? == 0 ]];
 	then
 		echo "killing local monkeybat.bat"
 	elif [[ $? > 0 ]];
